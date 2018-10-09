@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Unicorn Tweeters</title>
+</head>
+<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/journal/bootstrap.css">
+<body>
+    <div class="page">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<img class="unicorn" src="/static/unicorn.png" style="width:3em; height:3em;" /> Unicorn Tweeters
+        </nav>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Location</th>
+                <th>Tweet</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in results %}
+            <tr>
+                {% for key, value in result.items() %}
+                    <td>{{value}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
