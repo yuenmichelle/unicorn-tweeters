@@ -1,0 +1,65 @@
+h1 {
+  color: white;
+}
+
+table.table {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #EB6864;
+  border-style: solid;
+  color: #000000;
+}
+
+table.table td {
+  border-width: 2px;
+  border-color: #EB6864;
+  border-style: solid;
+  padding: 5px;
+}
+
+table.table thead {
+  background-color: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table thead th {
+  border-width: 2px;
+  border-color: #EB6864;
+  border-style: solid;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table th:nth-child(odd) {
+  background-color: #e6e6fa;
+}
+
+.table th:nth-child(even) {
+  background-color: #f0fff0;
+}
+
+.actions-section {
+  width: 15%;
+  right: 0;
+  padding: 20px;
+}
+
+.refresh, .back {
+  float: left;
+  right: 0px;
+  width: 150px;
+  padding-bottom: 10px;
+}
+
+.unicorn {
+  width: 3em;
+  height: 3em;
+}
+
+.tweets-section, .completed-section {
+  padding: 20px;
+  margin-right: 15%;
+}

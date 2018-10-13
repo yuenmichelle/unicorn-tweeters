@@ -1,33 +1,72 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <title>Unicorn Tweeters</title>
-</head>
-<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/journal/bootstrap.css">
-<body>
-    <div class="page">
+  <head>
+      <title>Unicorn Tweeters</title>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/journal/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="static/style.css">
+      <link rel="shortcut icon" type="image/png" href="/static/unicorn.png"/>
+  </head>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-			<img class="unicorn" src="/static/unicorn.png" style="width:3em; height:3em;" /> Unicorn Tweeters
-        </nav>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Username</th>
-                <th>Location</th>
-                <th>Tweet</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for result in results %}
-            <tr>
-                {% for key, value in result.items() %}
-                    <td>{{value}}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</body>
+  <body>
+
+  <div class="page">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <img class="unicorn" src="/static/unicorn.png"/> <h1 class="unicorn-heading">Unicorn Tweeters</h1>
+      </nav>
+  </div>
+
+  <div class="tweets-section">
+
+      <h2>Tweets</h2>
+
+      <div class="refresh">
+          <button class="btn btn-lg btn-primary btn-block" onclick="window.location.reload()">Refresh</button>
+      </div>
+
+      <table class="table">
+          <thead>
+          <tr>
+              <th>Username</th>
+              <th>Location</th>
+              <th>Tweet</th>
+              <th>Created</th>
+              <th>Times Retweeted</th>
+              <th>Times Favourited</th>
+              <th>ID</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for result in results %}
+          <tr>
+              {% for key, value in result.items() %}
+              <td>{{value}}</td>
+              {% endfor %}
+          </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+  </div>
+
+  <div class="actions-section w3-sidebar w3-bar-block w3-card" style="width:15%; right:0; height: 320px;">
+
+      <h2>Favourite</h2>
+
+      <form method="POST" action="/favourite">
+          <input class="form-control" type="text" required name="id" placeholder="Tweet ID">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">OK</button>
+      </form>
+
+      <hr>
+
+      <h2>Retweet</h2>
+
+      <form method="POST" action="/retweet">
+          <input class="form-control" type="text" required name="id" placeholder="Tweet ID">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">OK</button>
+      </form>
+
+  </div>
+
+  </body>
 </html>

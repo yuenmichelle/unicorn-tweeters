@@ -31,18 +31,32 @@ def home():
     response = requests.get(url="https://api.twitter.com/1.1/search/tweets.json?q=bpsfleet", auth=oauth)
 
     filtered_results = []
-
+    print(response.text)
     json_object = json.loads(response.text)
 
     for tweets in json_object['statuses']:
         result = {
             "username": tweets["user"]["name"],
             "location": tweets["user"]["location"],
-            "tweet": tweets["text"]
+            "tweet": tweets["text"],
+            "created": tweets["created_at"],
+            "retweeted": tweets["retweet_count"],
+            "favorited": tweets["favorite_count"],
+            "id": tweets["id"]
         }
         filtered_results.append(result)
 
     return render_template('view.html', results=filtered_results)
+
+
+@app.route('/retweet', methods=['POST'])
+def retweet():
+    return render_template('success.html')
+
+
+@app.route('/favourite', methods=['POST'])
+def favourite():
+    return render_template('success.html')
 
 
 app.run()
