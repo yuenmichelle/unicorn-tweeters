@@ -31,7 +31,6 @@ def home():
     response = requests.get(url="https://api.twitter.com/1.1/search/tweets.json?q=bpsfleet", auth=oauth)
 
     filtered_results = []
-    print(response.text)
     json_object = json.loads(response.text)
 
     for tweets in json_object['statuses']:
@@ -41,8 +40,7 @@ def home():
             "tweet": tweets["text"],
             "created": tweets["created_at"],
             "retweeted": tweets["retweet_count"],
-            "favorited": tweets["favorite_count"],
-            "id": tweets["id"]
+            "favorited": tweets["favorite_count"]
         }
         filtered_results.append(result)
 
@@ -50,13 +48,13 @@ def home():
 
 
 @app.route('/retweet', methods=['POST'])
-def retweet():
-    return render_template('success.html')
+def retweet(tweet_id):
+    return render_template('success.html', tweet_id=tweet_id)
 
 
 @app.route('/favourite', methods=['POST'])
-def favourite():
-    return render_template('success.html')
+def favourite(tweet_id):
+    return render_template('success.html', tweet_id=tweet_id)
 
 
 app.run()
