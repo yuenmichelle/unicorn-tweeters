@@ -33,12 +33,13 @@
               <th>Created</th>
               <th>Times Retweeted</th>
               <th>Times Favourited</th>
+              <th>ID</th>
           </tr>
           </thead>
           <tbody>
           {% for result in results %}
           <tr>
-              {% for key, value in result.items() %}
+              {% for value in result.item %}
               <td>{{value}}</td>
               {% endfor %}
           </tr>
@@ -52,7 +53,7 @@
       <h2>Favourite</h2>
 
       <form method="POST" action="/favourite">
-          <input class="form-control" type="text" required name="id" placeholder="Tweet ID">
+          <input class="form-control" type="text" name="tweet_id" placeholder="Tweet ID" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit">OK</button>
       </form>
 
@@ -61,7 +62,7 @@
       <h2>Retweet</h2>
 
       <form method="POST" action="/retweet">
-          <input class="form-control" type="text" required name="id" placeholder="Tweet ID">
+          <input class="form-control" type="text" name="tweet_id" placeholder="Tweet ID" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit">OK</button>
       </form>
 

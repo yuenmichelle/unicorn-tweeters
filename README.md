@@ -2,6 +2,9 @@
 
 This is a Python challenge designed to allow you to call the [Twitter API](https://developer.twitter.com/en/docs).
 
+## What is provided
+* A webpage where you can find all tweets containing #bpsfleet
+* Python code which shows how to call the search tweets endpoint
 
 # The Challenge
 
@@ -12,10 +15,6 @@ This is a Python challenge designed to allow you to call the [Twitter API](https
 3) Replace the favourite API calls to make real calls to the Twitter API. App route ```@favourite```.
 4) Bonus: If you have aced the above, add a new html form to ```view.html``` which calls a new app route called ```tweet```.
 
-## What is provided
-* A webpage where you can find all tweets containing #bpsfleet
-* Python code which shows how to call the search tweets endpoint
-
 
 ## Commands to get you started
 
@@ -25,9 +24,9 @@ Make sure you are in the right directory:
 pwd
 ```
 
-If you are then it will return with ```/Users/michelleyuen/unicorn-tweeters```
+If you are then it will return with ```/pi/home/Desktop/unicorn-tweeters```
 
-If you are not, then call ```cd unicorn-tweeters``` (depending where you are)
+If you are not, then call ```cd Desktop/unicorn-tweeters``` (depending where you are)
 
 To run the Python script, simply call:
 
