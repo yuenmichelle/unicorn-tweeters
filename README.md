@@ -1,16 +1,15 @@
 # Unicorn Tweeters Challenge
 
-1) Add Tweet ID to be displayed
-(Hint:
+1. Add Tweet ID to be displayed (Hint:
 ```"id":1049783444971147271```, files to be changed ```view.html``` and ```run.py```)
-2) Add Times Retweeted to be displayed (```view.html``` and ```run.py```) (Hint: ```"retweet_count": 2```)
-3) Add Times Favourited to be displayed (```view.html``` and ```run.py```) (Hint: ```"favorite_count": 1```)
-4) Add new 'Retweet' functionality to the website (```view.html```)
-5) Implement 'Retweet' functionality in Python (```run.py```)
-6) Add new 'Tweet' functionality to the website (```view.html```)
-7) Implement 'Tweet' functionality in Python (```run.py```)
-8) Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
-9) Draw some other functionality you'd love to see and think about how
+2. Add Times Retweeted to be displayed (```view.html``` and ```run.py```) (Hint: ```"retweet_count": 2```)
+3. Add Times Favourited to be displayed (```view.html``` and ```run.py```) (Hint: ```"favorite_count": 1```)
+4. Add new 'Retweet' functionality to the website (```view.html```)
+5. Implement 'Retweet' functionality in Python (```run.py```)
+6. Add new 'Tweet' functionality to the website (```view.html```)
+7. Implement 'Tweet' functionality in Python (```run.py```)
+8. Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
+9. Draw some other functionality you'd love to see and think about how
 
 ## Possible Solution
 ![](solution.png)
