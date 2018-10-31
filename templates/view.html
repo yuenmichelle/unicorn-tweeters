@@ -4,15 +4,15 @@
       <title>Unicorn Tweeters</title>
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/journal/bootstrap.css">
-      <link rel="stylesheet" type="text/css" href="static/style.css">
-      <link rel="shortcut icon" type="image/png" href="/static/unicorn.png"/>
+      <link rel="stylesheet" type="text/css" href="static/css/style.css">
+      <link rel="shortcut icon" type="image/png" href="/static/images/unicorn.png"/>
   </head>
 
   <body>
 
   <div class="page">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <img class="unicorn" src="/static/unicorn.png"/> <h1 class="unicorn-heading">Unicorn Tweeters</h1>
+          <img class="unicorn" src="/static/images/unicorn.png"/> <h1 class="unicorn-heading">Unicorn Tweeters</h1>
       </nav>
   </div>
 
@@ -39,7 +39,7 @@
           <tbody>
           {% for result in results %}
           <tr>
-              {% for value in result.item %}
+              {% for value in result %}
               <td>{{value}}</td>
               {% endfor %}
           </tr>
@@ -48,7 +48,16 @@
       </table>
   </div>
 
-  <div class="actions-section w3-sidebar w3-bar-block w3-card" style="width:15%; right:0; height: 320px;">
+  <div class="actions-section w3-sidebar w3-bar-block w3-card" style="width:16%; right:0; height: 480px;">
+
+      <h2>Retweet</h2>
+
+      <form method="POST" action="/retweet">
+          <input class="form-control" type="text" name="tweet_id" placeholder="Tweet ID" required>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">OK</button>
+      </form>
+
+      <hr>
 
       <h2>Favourite</h2>
 
@@ -59,10 +68,10 @@
 
       <hr>
 
-      <h2>Retweet</h2>
+      <h2>Tweet</h2>
 
-      <form method="POST" action="/retweet">
-          <input class="form-control" type="text" name="tweet_id" placeholder="Tweet ID" required>
+      <form method="POST" action="/tweet">
+          <input class="form-control" type="text" name="tweet_text" placeholder="#bpsfleet I'm a Python coder!" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit">OK</button>
       </form>
 

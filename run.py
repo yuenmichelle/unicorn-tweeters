@@ -1,6 +1,7 @@
 import flask
 import requests
 import json
+import re
 from requests_oauthlib import OAuth1
 from flask import render_template, request
 
@@ -24,6 +25,11 @@ def get_oauth():
     return oauth
 
 
+def detect_url(string):
+    url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\), ]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', string)
+    return url
+
+
 @app.route('/', methods=['GET'])
 def home():
     oauth = get_oauth()
@@ -31,7 +37,6 @@ def home():
 
     filtered_results = []
     json_object = json.loads(response.text)
-    print(json_object)
 
     for tweets in json_object['statuses']:
         result = []
@@ -53,9 +58,9 @@ def retweet():
     tweet_id = request.form['tweet_id']
     response = requests.post(url="https://api.twitter.com/1.1/statuses/retweet/" + tweet_id + ".json", auth=get_oauth())
     if response.ok:
-        return render_template('success.html', tweet_id=tweet_id)
+        return render_template('success.html', outcome="Action completed for Tweet ID " + tweet_id)
     else:
-        return render_template('failure.html', tweet_id=tweet_id)
+        return render_template('failure.html')
 
 
 @app.route('/favourite', methods=['POST'])
@@ -64,9 +69,19 @@ def favourite():
     parameters = { "id": tweet_id }
     response = requests.post(url="https://api.twitter.com/1.1/favorites/create.json", auth=get_oauth(), params=parameters)
     if response.ok:
-        return render_template('success.html', tweet_id=tweet_id)
+        return render_template('success.html', outcome="Action completed for Tweet ID " + tweet_id)
     else:
-        return render_template('failure.html', tweet_id=tweet_id)
+        return render_template('failure.html')
 
+
+@app.route('/tweet', methods=['POST'])
+def tweet():
+    message = request.form['tweet_text']
+    payload = { 'status': message }
+    response = requests.post(url="https://api.twitter.com/1.1/statuses/update.json", data=payload, auth=get_oauth())
+    if response.ok:
+        return render_template('success.html', outcome="Tweet posted successfully")
+    else:
+        return render_template('failure.html')
 
 app.run()
