@@ -1,7 +1,6 @@
 import flask
 import requests
 import json
-import re
 from requests_oauthlib import OAuth1
 from flask import render_template, request
 
@@ -25,11 +24,6 @@ def get_oauth():
     return oauth
 
 
-def detect_url(string):
-    url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\), ]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', string)
-    return url
-
-
 @app.route('/', methods=['GET'])
 def home():
     oauth = get_oauth()
@@ -44,9 +38,6 @@ def home():
         result.append(tweets["user"]["location"])
         result.append(tweets["text"])
         result.append(tweets["created_at"])
-        result.append(tweets["retweet_count"])
-        result.append(tweets["favorite_count"])
-        result.append(tweets["id"])
 
         filtered_results.append(result)
 
@@ -62,26 +53,5 @@ def retweet():
     else:
         return render_template('failure.html')
 
-
-@app.route('/favourite', methods=['POST'])
-def favourite():
-    tweet_id = request.form['tweet_id']
-    parameters = { "id": tweet_id }
-    response = requests.post(url="https://api.twitter.com/1.1/favorites/create.json", auth=get_oauth(), params=parameters)
-    if response.ok:
-        return render_template('success.html', outcome="Action completed for Tweet ID " + tweet_id)
-    else:
-        return render_template('failure.html')
-
-
-@app.route('/tweet', methods=['POST'])
-def tweet():
-    message = request.form['tweet_text']
-    payload = { 'status': message }
-    response = requests.post(url="https://api.twitter.com/1.1/statuses/update.json", data=payload, auth=get_oauth())
-    if response.ok:
-        return render_template('success.html', outcome="Tweet posted successfully")
-    else:
-        return render_template('failure.html')
 
 app.run()

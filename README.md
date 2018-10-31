@@ -78,10 +78,6 @@ tweets["favorite_count"]
 ```
 
 ```
-requests.post(url="https://api.twitter.com/1.1/statuses/retweet/" + tweet_id + ".json", auth=oauth)
-```
-
-```
 payload = { 'status' : 'Hi everyone at #bpsfleet' }
 requests.post(url="https://api.twitter.com/1.1/statuses/update.json", data=payload, auth=oauth)
 ```
