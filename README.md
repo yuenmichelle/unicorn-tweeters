@@ -12,6 +12,9 @@
 8) Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
 9) Draw some other functionality you'd love to see and think about how
 
+## Possible Solution
+![](solution.png)
+
 ## Commands to get you started
 
 Make sure you are in the right directory:
