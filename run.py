@@ -1,3 +1,4 @@
+from datetime import datetime
 import flask
 import requests
 import json
@@ -37,7 +38,7 @@ def home():
         result.append(tweets["user"]["name"])
         result.append(tweets["user"]["location"])
         result.append(tweets["text"])
-        result.append(tweets["created_at"])
+        result.append(datetime.strptime(tweets["created_at"], '%a %b %d %H:%M:%S %z %Y').strftime('%d/%m/%Y %H:%M:%S'))
 
         filtered_results.append(result)
 

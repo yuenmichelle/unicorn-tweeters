@@ -1,22 +1,11 @@
-# Unicorn Tweeters Challenge
+# Unicorn Tweeters Coding Challenge
 
-1. Add Tweet ID to be displayed (Hint:
-```"id":1049783444971147271```, files to be changed ```view.html``` and ```run.py```)
-2. Add Times Retweeted to be displayed (```view.html``` and ```run.py```) (Hint: ```"retweet_count": 2```)
-3. Add Times Favourited to be displayed (```view.html``` and ```run.py```) (Hint: ```"favorite_count": 1```)
-4. Add new 'Retweet' functionality to the website (```view.html```)
-5. Implement 'Retweet' functionality in Python (```run.py```)
-6. Add new 'Tweet' functionality to the website (```view.html```)
-7. Implement 'Tweet' functionality in Python (```run.py```)
-8. Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
-9. Draw some other functionality you'd love to see and think about how
+You have been provided with some working code for the user interface and the inner workings to connect
+to the Twitter application program interface (API).
 
-## Possible Solution
-![](solution.png)
+After you have set up your workstation and connected your Raspberry Pi, open a terminal and run the following commands:
 
-## Commands to get you started
-
-Make sure you are in the right directory:
+Make sure you are in the right directory by running:
 
 ```
 pwd
@@ -24,7 +13,7 @@ pwd
 
 If you are then it will return with ```/pi/home/Desktop/unicorn-tweeters```
 
-If you are not, then call ```cd Desktop/unicorn-tweeters``` (depending where you are)
+If you are not, then call ```cd Desktop/unicorn-tweeters```
 
 To run the Python script, simply call:
 
@@ -32,13 +21,41 @@ To run the Python script, simply call:
 python3 run.py
 ```
 
-The front-end webpage is accessible by typing the following into your Browser:
+The frontend webpage is accessible on http://localhost:5000
 
-```
-http://127.0.0.1:5000
-```
+## Tasks
 
-## Endpoints of interest
+#### 1) Show the Tweet ID on the website
+* Change ```run.py```
+* Change ```view.html```
+(Hint:
+```"id":1049783444971147271```, files to be changed  and )
+
+#### 2) Show how many times a tweet was retweeted
+* Change ```run.py```
+* Change ```view.html```
+> Hint: ```"retweet_count": 2```
+
+#### 3) Show how many times a tweet was favourited
+* Change ```run.py```
+* Change ```view.html```
+> Hint: ```"favorite_count": 1```
+
+#### 4) Implement the ability to retweet from the website
+* (```view.html```)
+* (```run.py```)
+
+#### 5) Add new 'Tweet' functionality to the website
+* (```view.html```)
+* (```run.py```)
+
+#### 6) Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
+#### 7) Draw some other functionality you'd love to see and think about how
+
+## Possible Solution
+![](solution.png)
+
+## URLs of interest
 
 #### Favourite
 
