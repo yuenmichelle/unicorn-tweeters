@@ -1,3 +1,4 @@
+# Imports
 from datetime import datetime
 import flask
 import requests
@@ -7,13 +8,14 @@ from flask import render_template, request
 
 app = flask.Flask(__name__)
 
-
+# Twitter API endpoints
 REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
 AUTHORIZE_URL = "https://api.twitter.com/oauth/authorize?oauth_token="
 ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
 ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
 
 
+# Authentication to the Twitter API
 def get_oauth():
     with open("credentials.json") as f:
         data = json.load(f)
@@ -24,15 +26,17 @@ def get_oauth():
                    resource_owner_secret = data["OAUTH_TOKEN_SECRET"])
     return oauth
 
-
+# Main method
 @app.route('/', methods=['GET'])
 def home():
     oauth = get_oauth()
+    # Find all Tweets that contain "BPSFleet"
     response = requests.get(url="https://api.twitter.com/1.1/search/tweets.json?q=bpsfleet", auth=oauth)
 
     filtered_results = []
     json_object = json.loads(response.text)
 
+    # Populates results
     for tweets in json_object['statuses']:
         result = []
         result.append(tweets["user"]["name"])
@@ -44,13 +48,14 @@ def home():
 
     return render_template('view.html', results=filtered_results)
 
-
-@app.route('/retweet', methods=['POST'])
-def retweet():
-    tweet_id = request.form['tweet_id']
-    response = requests.post(url="https://api.twitter.com/1.1/statuses/retweet/" + tweet_id + ".json", auth=get_oauth())
+# Method to create new Tweet
+@app.route('/tweet', methods=['POST'])
+def tweet():
+    message = request.form['tweet_text']
+    payload = { 'status': message }
+    response = requests.post(url="https://api.twitter.com/1.1/statuses/update.json", data=payload, auth=get_oauth())
     if response.ok:
-        return render_template('success.html', outcome="Action completed for Tweet ID " + tweet_id)
+        return render_template('success.html', outcome="Tweet posted successfully")
     else:
         return render_template('failure.html')
 

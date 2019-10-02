@@ -3,105 +3,85 @@
 You have been provided with some working code for the user interface and the inner workings to connect
 to the Twitter application program interface (API).
 
-After you have set up your workstation and connected your Raspberry Pi, open a terminal and run the following commands:
+After you have set up your workstation and connected your Raspberry Pi, open a terminal...
 
-Make sure you are in the right directory by running:
+![](images/terminal.png)
+
+Firstly make sure you are in the right directory by running:
 
 ```
 pwd
 ```
 
-If you are then it will return with ```/pi/home/Desktop/unicorn-tweeters```
+If you are, then it will return with ```/pi/home/Desktop/unicorn-tweeters```
 
-If you are not, then call ```cd Desktop/unicorn-tweeters```
+If you are not, then run ```cd /pi/home/Desktop/unicorn-tweeters```
 
-To run the Python script, simply call:
+To run the Python script, simply run:
 
 ```
 python3 run.py
 ```
 
-The frontend webpage is accessible on http://localhost:5000
+The frontend webpage is then accessible at http://localhost:5000
+
+## Code files
+
+The files you will need to edit are in ```/pi/home/Desktop/unicorn-tweeters```
+
+* ```run.py``` - Main Python executable
+* ```templates/view.html``` - HTML template
+
+## How to edit the files
+To edit the files, you can use ```Thonny```
+
+![](images/thonny.png)
+
 
 ## Tasks
+### 1) Share your first Tweet!
+On the right hand-side, we already have the ability to add new Tweets. Add a new Tweet using #bpsfleet and share your thoughts on today! <br />
+Don't forget to click the 'Refresh' button to get your Tweet to appear.
 
-#### 1) Show the Tweet ID on the website
-* Change ```run.py```
-* Change ```view.html```
-(Hint:
-```"id":1049783444971147271```, files to be changed  and )
-
-#### 2) Show how many times a tweet was retweeted
-* Change ```run.py```
-* Change ```view.html```
-> Hint: ```"retweet_count": 2```
-
-#### 3) Show how many times a tweet was favourited
-* Change ```run.py```
-* Change ```view.html```
-> Hint: ```"favorite_count": 1```
-
-#### 4) Implement the ability to retweet from the website
-* (```view.html```)
-* (```run.py```)
-
-#### 5) Add new 'Tweet' functionality to the website
-* (```view.html```)
-* (```run.py```)
-
-#### 6) Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
-#### 7) Draw some other functionality you'd love to see and think about how
-
-## Possible Solution
-![](solution.png)
-
-## URLs of interest
-
-#### Favourite
-
-```
-https://api.twitter.com/1.1/favorites/create.json?id={tweet_id}
-```
-e.g.
-```
-https://api.twitter.com/1.1/favorites/create.json?id=1050063156230410240
-```
-
-#### Retweet
-
-```
-https://api.twitter.com/1.1/statuses/retweet/{tweet_id}.json
-```
-e.g.
-```
-https://api.twitter.com/1.1/statuses/retweet/1050063156230410240.json
-```
-
-#### Post new tweet
-
-```
-https://api.twitter.com/1.1/statuses/update.json
-```
-
-Body: key ```status```, value {{status}}
-
-
-### Solution Hints
-
+### 2) Show the Tweet ID on the website
+The application already supports tweeting but before we can retweet or like a Tweet, we need to know its ID.
+In order to do this we need to add a Tweet ID column to the list of Tweets.
+> Solution hint:
 ```
 tweets["id"]
 ```
 
-```
-tweets["favorite_count"]
-```
-
-```
-payload = { 'status' : 'Hi everyone at #bpsfleet' }
-requests.post(url="https://api.twitter.com/1.1/statuses/update.json", data=payload, auth=oauth)
-```
-
+### 3) Add the ability to like tweets from the website
+Now that we know the Tweet IDs, we can allow the website to submit a request to like it.
+> Solution hint:
 ```
 parameters = { "id": tweet_id }
 response = requests.post(url="https://api.twitter.com/1.1/favorites/create.json", auth=get_oauth(), params=parameters)
 ```
+
+### 4) Show how many times a Tweet was liked
+How many likes has the Tweet had? Why don't we add it and see?
+> Solution hint:
+```
+tweets["favorite_count"]
+```
+
+### 5) Implement the ability to retweet from the website
+Using the Tweet ID, let's add the ability to retweet.
+> Solution hint:
+```
+https://api.twitter.com/1.1/statuses/retweet/{tweet_id}.json
+```
+
+### 6) Show how many times a Tweet has been retweeted
+We now want to be able to see how many times all the tweets have been retweeted.
+> Solution hint:
+```
+"retweet_count": 2
+```
+
+#### 7) Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
+#### 8) Draw some other functionality you'd love to see and think about how
+
+## Possible Solution
+![](images/solution.png)
