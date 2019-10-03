@@ -80,8 +80,8 @@ We now want to be able to see how many times all the tweets have been retweeted.
 "retweet_count": 2
 ```
 
-#### 7) Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
-#### 8) Draw some other functionality you'd love to see and think about how
+### 7) Customise your website, change it to your favourite colours, change 'Unicorn Tweeters' to your unique team name
+### 8) Draw some other functionality you'd love to see and think about how
 
 ## Possible Solution
 ![](images/solution.png)
